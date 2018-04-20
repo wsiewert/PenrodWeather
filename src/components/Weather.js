@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard';
+// import { Button, Card } from '@salesforce/design-system-react';
+
 
 class Weather extends Component {
 	render() {
         let weatherCards;
+
         if(this.props.weather){
             weatherCards = this.props.weather.map( weather => {
                 return (
@@ -11,8 +14,9 @@ class Weather extends Component {
                 );
             });
         }
+
 		return (
-			<div className="Weather">
+			<div className="card">
 				{weatherCards}
             </div>
 		);
