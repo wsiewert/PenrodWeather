@@ -6,7 +6,6 @@ class Weather extends Component {
         let weatherCards;
         if(this.props.weather){
             weatherCards = this.props.weather.map( weather => {
-                // console.log(weatherCard);
                 return (
                     < WeatherCard key = {weather.city} weather = {weather}/>
                 );

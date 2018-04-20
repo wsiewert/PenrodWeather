@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Weather from './components/Weather'
-import './App.css';
+import Weather from './components/Weather';
+// import './App.css';
+import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
 class App extends Component {
 
@@ -11,7 +12,8 @@ class App extends Component {
 		}
 	}
 
-	componentWillMount() {
+	getWeather(){
+		//ajax to weather API instead of below
 		this.setState({
 			weather: [
 				{
@@ -38,10 +40,18 @@ class App extends Component {
 		});
 	}
 
+	componentWillMount() {
+		this.getWeather();
+	}
+
+	componentDidMount(){
+		//State after component renders
+	}
+
 	render() {
 		return (
 			<div className="App">
-				< Weather weather = {this.state.weather}/>
+				< Weather weather = {this.state.weather}/>			
       		</div>
 		);
 	}
