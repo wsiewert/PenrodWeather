@@ -1,17 +1,47 @@
 import React, { Component } from 'react';
-import WeatherCard from './components/WeatherCard'
+import Weather from './components/Weather'
 import './App.css';
 
 class App extends Component {
 
-	componentWillMount() {
+	constructor(){
+		super();
+		this.state = {
+			weather: []
+		}
+	}
 
+	componentWillMount() {
+		this.setState({
+			weather: [
+				{
+					city: "City 1",
+					temperature: 75,
+					forecast: "sunny"
+				},
+				{
+					city: "City 2",
+					temperature: 75,
+					forecast: "sunny"
+				},
+				{
+					city: "City 3",
+					temperature: 75,
+					forecast: "sunny"
+				},
+				{
+					city: "City 4",
+					temperature: 75,
+					forecast: "sunny"
+				}
+			]
+		});
 	}
 
 	render() {
 		return (
 			<div className="App">
-				App.js
+				< Weather weather = {this.state.weather}/>
       		</div>
 		);
 	}
