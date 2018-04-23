@@ -19,8 +19,7 @@ class App extends Component {
 			dataType: "json",
 			cache: "false"
 		  }).done(function (response) {
-			this.setState({weather: response.list});			  
-			console.log(response.list);
+			this.setState({weather: response.list});
 		  }.bind(this)).fail(function (err){
 			console.log(err);
 		  });
