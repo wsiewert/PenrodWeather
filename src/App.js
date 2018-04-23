@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+import { Key } from './keys.js';
 import Weather from './components/Weather';
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
@@ -11,49 +13,21 @@ class App extends Component {
 		}
 	}
 
-	getFarhrenheitByKelvin(kelvin){
-		let farhrenheitTemp = (9/5)*(kelvin - 273) + 32;
-		return farhrenheitTemp;
-	}
-
-	getWeather(){
-		//ajax to weather API instead of below
-		this.setState({
-			weather: [
-				{
-					city: "Milwaukee",
-					temperature: 75,
-					forecast: "sunny",
-					address: "123 City Street, WI"
-				},
-				{
-					city: "City 2",
-					temperature: 75,
-					forecast: "sunny",
-					address: "123 City Street, WI"					
-				},
-				{
-					city: "City 3",
-					temperature: 75,
-					forecast: "sunny",
-					address: "123 City Street, WI"					
-				},
-				{
-					city: "City 4",
-					temperature: 75,
-					forecast: "sunny",
-					address: "123 City Street, WI"					
-				}
-			]
-		});
+	getWeather(){  
+		  $.ajax({
+			url: "http://api.openweathermap.org/data/2.5/group?id=5263045,4887398,5037649,4684888&APPID=" + Key,
+			dataType: "json",
+			cache: "false"
+		  }).done(function (response) {
+			this.setState({weather: response.list});			  
+			console.log(response.list);
+		  }.bind(this)).fail(function (err){
+			console.log(err);
+		  });
 	}
 
 	componentWillMount() {
 		this.getWeather();
-	}
-
-	componentDidMount(){
-		//State after component renders
 	}
 
 	render() {
