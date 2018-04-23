@@ -16,7 +16,7 @@ class Weather extends Component {
         }
 
 		return (
-			<div className="card">
+			<div className="slds-grid slds-wrap">
 				{weatherCards}
             </div>
 		);
